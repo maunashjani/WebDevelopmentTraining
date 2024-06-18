@@ -16,14 +16,27 @@
         let student = {
             firstName: "John",
             lastName: "Doe",
-            marks: 70
+            marks: 70,
+            email: "john@example.com",
+            address: {
+                buildingName: "demo building",
+                city: "demo city",
+                pincode: 123456
+            }
         };
 
         var output = document.getElementById("output");
 
-        output.innerHTML = 
-        `${student.firstName},${student.lastName},${student.marks}`;
-        
+        output.innerHTML =
+            `${student.firstName},
+        ${student.lastName},
+        ${student.marks},
+        ${student.email},
+        ${student.address.buildingName},
+        ${student.address.city},
+        ${student.address.pincode}
+        `;
+
     </script>
 </body>
 
