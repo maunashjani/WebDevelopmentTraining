@@ -16,19 +16,20 @@
 
     <script>
         //constructor function
-        function CollegeStudent(first, last) {
+        function CollegeStudent(first, last, email) {
             this.firstName = first;
             this.lastName = last;
+            this.email = email;
         };
 
         //prototype method the below function will be inhereted by all
         //instances created for CollegeStudent
         CollegeStudent.prototype.fullName = function () {
-            return this.firstName + " " + this.lastName;
+            return this.firstName + " " + this.lastName + " " + this.email;
         };
 
         //new instance of CollegeStudent
-        let studentInfo = new CollegeStudent(student.firstName, student.lastName);
+        let studentInfo = new CollegeStudent(student.firstName, student.lastName, student.email);
 
         //calling the prototype function using object instance
         output.innerHTML = studentInfo.fullName();
