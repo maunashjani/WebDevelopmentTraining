@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="output"></p>
+
+    <script>
+        var txt = "THIS IS DEMO COLLEGE";
+        var output = document.getElementById("output");
+        
+        //output.innerHTML = txt.length;
+
+        //output.innerHTML = txt.toUpperCase();
+
+        //output.innerHTML = txt.toLowerCase();
+
+        output.innerHTML = txt.substring(5);
+
+        output.innerHTML = txt.substring(5, 9);
+
+        output.innerHTML = txt.indexOf("E");
+
+        output.innerHTML = txt.lastIndexOf("E");
+    </script>
+</body>
+
+</html>
