@@ -9,11 +9,18 @@
     <script>
         const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         
-        numbers.forEach(number => {
+        const num2 = numbers.map(number => {
             if(number%2==0){
                 console.log(number);
+                return number;
             }
         });
+
+        console.log("Array 1");
+        console.log(numbers);
+
+        console.log("Array 2");
+        console.log(num2);
         
     </script>
 </body>
