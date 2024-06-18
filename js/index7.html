@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Objects in JS</h1>
+
+    <p id="output"></p>
+
+    <script>
+        let student = {
+            firstName: "John",
+            lastName: "Doe",
+            marks: 70
+        };
+
+        var output = document.getElementById("output");
+
+        output.innerHTML = 
+        `${student.firstName},${student.lastName},${student.marks}`;
+        
+    </script>
+</body>
+
+</html>
