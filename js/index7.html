@@ -13,6 +13,21 @@
     <p id="output"></p>
 
     <script src="index7.js"></script>
+
+    <script>
+        function CollegeStudent(first, last) {
+            this.firstName = first;
+            this.lastName = last;
+        };
+
+        CollegeStudent.prototype.fullName = function () {
+            return this.firstName + " " + this.lastName;
+        };
+
+        let studentInfo = new CollegeStudent(student.firstName, student.lastName);
+
+        output.innerHTML = studentInfo.fullName();
+    </script>
 </body>
 
 </html>
