@@ -22,7 +22,7 @@
             this.email = email;
         };
 
-        //prototype method the below function will be inhereted by all
+        //prototype method the below function will be inherited by all
         //instances created for CollegeStudent
         CollegeStudent.prototype.fullName = function () {
             return this.firstName + " " + this.lastName + " " + this.email;
@@ -33,7 +33,14 @@
 
         //calling the prototype function using object instance
         output.innerHTML = studentInfo.fullName();
-    </script>
+
+        //Inheritance
+        SchoolStudent.prototype = Object.create(CollegeStudent.prototype);
+        let studentInfo2 = new SchoolStudent(student.firstName, student.lastName, student.email);
+        output.innerHTML = studentInfo2.fullName();
+
+
+</script>
 </body>
 
 </html>
