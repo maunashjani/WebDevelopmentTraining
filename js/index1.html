@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="txtName" id="txtName">
+
+    <br>
+    <br>
+
+    <button id="btnSubmit">Submit</button>
+
+    <br>
+    <br>
+
+    <p id="output">output here...</p>
+
+    <script>
+        var btnSubmit = document.getElementById("btnSubmit");
+        btnSubmit.addEventListener("click", showData);
+
+        function showData() {
+            let name = document.getElementById("txtName");
+
+            let output = document.getElementById("output");
+            
+            output.innerHTML = "Hello " + name.value;
+        }
+    </script>
+
+
+</body>
+</html>
