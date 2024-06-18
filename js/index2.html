@@ -9,20 +9,20 @@
     <p id="output"></p>
 
     <script>
-        function checkVotingEligible(age) {
-            let output = document.getElementById("output");
+        var output = document.getElementById("output");
 
-            //let age = 20;
+        function checkVotingEligible(age) {
             
-            if(age <= 18) {
-                output.innerHTML = "Not eligible";
+            let result = "Not Eligible";
+
+            if(age >= 18) {
+                result = "Eligible";
             }
-            else {
-                output.innerHTML = "Eligible";
-            }
+
+            return result;
         }
 
-        checkVotingEligible(17);
+        output.innerHTML = checkVotingEligible(27);
 
     </script>
 </body>
