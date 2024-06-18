@@ -11,7 +11,7 @@ let student = {
     displayMarks: function() {
         return this.marks;
     },
-    displayPincode: () => {
+    displayPincode: function () {
         return this.address.pincode;
     }
 };
