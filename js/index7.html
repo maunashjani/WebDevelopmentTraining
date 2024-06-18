@@ -22,20 +22,26 @@
                 buildingName: "demo building",
                 city: "demo city",
                 pincode: 123456
+            },
+            displayMarks: function() {
+                return this.marks;
             }
         };
 
         var output = document.getElementById("output");
 
-        output.innerHTML =
-            `${student.firstName},
-        ${student.lastName},
-        ${student.marks},
-        ${student.email},
-        ${student.address.buildingName},
-        ${student.address.city},
-        ${student.address.pincode}
-        `;
+        // output.innerHTML =
+        //     `${student.firstName},
+        // ${student.lastName},
+        // ${student.marks},
+        // ${student.email},
+        // ${student.address.buildingName},
+        // ${student.address.city},
+        // ${student.address.pincode}
+        // `;
+
+        output.innerHTML = student.displayMarks();
+
 
     </script>
 </body>
