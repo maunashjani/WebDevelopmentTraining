@@ -9,10 +9,10 @@
     <p id="output"></p>
 
     <script>
-        function checkVotingEligible() {
+        function checkVotingEligible(age) {
             let output = document.getElementById("output");
 
-            let age = 20;
+            //let age = 20;
             
             if(age <= 18) {
                 output.innerHTML = "Not eligible";
@@ -22,7 +22,7 @@
             }
         }
 
-        checkVotingEligible();
+        checkVotingEligible(17);
 
     </script>
 </body>
