@@ -1,17 +1,15 @@
-const http = require('http');
-const url = require('url');
-
-const port = 3000;
+const http = require("http");
+const url = require("url");
 
 const server = http.createServer((req, res) => {
-    res.writeHead(200, {'Content-Type': 'text/html'});
+  res.statusCode = 200;
+  res.setHeader("Content-Type", "text/html");
 
-    var q = url.parse(req.url, true).query;
+  var q = url.parse(req.url, true).query;
 
-    var txt = q.productid + ", " + q.category;
-    res.end(txt);
+  var txt = q.id == 1 ? "Macbook Air" : "Not found";
+
+  res.end(txt);
 });
 
-server.listen(port, () => {
-  console.log(`Server running at http://localhost:${port}/`);
-});
+server.listen(3000);
