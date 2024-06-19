@@ -29,10 +29,6 @@ async function connectToDatabase() {
     });
   } catch (err) {
     console.error('Error:', err);
-  } finally {
-    // Close the connection
-    await client.close();
-    console.log('Disconnected from the database');
   }
 }
 
