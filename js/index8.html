@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <label>Number 1:</label>
+    <input type="text" id="txtNumber1">
+    <br>
+    <label>Number 2:</label>
+    <input type="text" id="txtNumber2">
+    <br>
+    <button id="submit">Submit</button>
+    <br>
+    <p id="output"></p>
+
+    <script>
+        function displayData(value) {
+            document.getElementById("output").innerHTML = value;
+        }
+
+        function calculatePower(num1, num2, displayData) {
+            let pow = Math.pow(num1, num2);
+            displayData(pow);
+        }
+
+        let button = document.getElementById("submit");
+        button.addEventListener("click", () => {
+            let txtNum1 = document.getElementById("txtNumber1").value;
+            let txtNum2 = document.getElementById("txtNumber2").value;
+
+            calculatePower(txtNum1, txtNum2, displayData());
+        });
+    </script>
+</body>
+
+</html>
