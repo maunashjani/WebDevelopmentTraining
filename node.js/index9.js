@@ -32,6 +32,10 @@ async function connectToDatabase() {
       console.log("in create API");
       await createDocuments(db, req, res);
     });
+
+    app.put('/update', async (req, res) => {
+      await updateDocuments(db, req, res);
+    });
   } catch (err) {
     console.error('Error:', err);
   }
@@ -60,6 +64,29 @@ async function createDocuments(db, req, res) {
   res.json({
     message: "document created",
     id: result.insertedId
+  });
+}
+
+// Function to update documents
+async function updateDocuments(db, req, res) {
+  const collection = db.collection('students');
+  
+  const { name, rollno, marks} = req.body;
+
+  const filter = {rollno: rollno};
+
+  const updateStudent = {
+    $set: {
+      name,
+      marks
+    }
+  };
+
+  const result = await collection.updateOne(filter, updateStudent);
+  
+  res.json({
+    message: "document updated",
+    count: result.modifiedCount
   });
 }
 
