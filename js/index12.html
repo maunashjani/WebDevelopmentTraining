@@ -56,6 +56,32 @@
                 })
                 .catch((error) => console.error(error));
         }
+
+        function updateData() {
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "rollno": document.getElementById("txtRollNo").value,
+                "name": document.getElementById("txtName").value,
+                "marks": document.getElementById("txtMarks").value,
+            });
+
+            const requestOptions = {
+                method: "PUT",
+                headers: myHeaders,
+                body: raw
+            };
+
+            fetch("http://localhost:3000/update", requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    if(result.count>0) {
+                        alert(result.message);
+                    }
+                })
+                .catch((error) => console.error(error));
+        }
     </script>
 
 </body>
