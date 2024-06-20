@@ -50,7 +50,7 @@
             fetch("http://localhost:3000/create", requestOptions)
                 .then((response) => response.json())
                 .then((result) => {
-                    if(result.length>0) {
+                    if(result.id.length>0) {
                         alert(result.message);
                     }
                 })

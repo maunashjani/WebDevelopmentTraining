@@ -1,5 +1,6 @@
 const express = require("express");
 const { MongoClient } = require("mongodb");
+const cors = require("cors");
 
 const app = express();
 const port = 3000;
@@ -8,8 +9,10 @@ const port = 3000;
 const url = 'mongodb://localhost:27017/';
 const dbName = 'studentsdb';
 
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
 
 // Function to connect to the MongoDB server
 async function connectToDatabase() {
