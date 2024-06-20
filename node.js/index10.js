@@ -59,57 +59,17 @@ async function readDocuments(db, req, res) {
 
 // Function to create documents
 async function createDocuments(db, req, res) {
-  const collection = db.collection('products');
   
-  const { name, rollno, marks }= req.body;
-
-  const newStudent = {name, rollno, marks};
-
-  const result = await collection.insertOne(newStudent);
-
-  res.json({
-    message: "document created",
-    id: result.insertedId
-  });
 }
 
 // Function to update documents
 async function updateDocuments(db, req, res) {
-  const collection = db.collection('products');
   
-  const { name, rollno, marks} = req.body;
-
-  const filter = {rollno: rollno};
-
-  const updateStudent = {
-    $set: {
-      name,
-      marks
-    }
-  };
-
-  const result = await collection.updateOne(filter, updateStudent);
-  
-  res.json({
-    message: "document updated",
-    count: result.modifiedCount
-  });
 }
 
 // Function to delete documents
 async function deleteDocuments(db, req, res) {
-  const collection = db.collection('products');
   
-  const { rollno} = req.body;
-
-  const filter = {rollno: rollno};
-
-  const result = await collection.deleteOne(filter);
-  
-  res.json({
-    message: "document deleted",
-    count: result.deletedCount
-  });
 }
 
 // Call the connectToDatabase function
