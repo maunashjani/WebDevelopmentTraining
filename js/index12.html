@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>CRUD UI</h1>
+    <br>
+    <div>
+        <label>Roll No</label>
+        <input type="text" id="txtRollNo">
+        <br>
+        <label>Name</label>
+        <input type="text" id="txtName">
+        <br>
+        <label>Marks</label>
+        <input type="text" id="txtMarks">
+        <br>
+        <button onclick="viewData()">View Data</button>
+        <br>
+        <p>Data fetched here...</p>
+        <br>
+        <br>
+        <button onclick="insertData()">Insert Data</button>
+        <button onclick="updateData()">Update Data</button>
+        <button onclick="deleteData()">Delete Data</button>
+    </div>
+
+    <script>
+        function insertData() {
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "rollno": document.getElementById("txtRollNo").value,
+                "name": document.getElementById("txtName").value,
+                "marks": document.getElementById("txtMarks").value,
+            });
+
+            const requestOptions = {
+                method: "POST",
+                headers: myHeaders,
+                body: raw
+            };
+
+            fetch("http://localhost:3000/create", requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    if(result.length>0) {
+                        alert(result.message);
+                    }
+                })
+                .catch((error) => console.error(error));
+        }
+    </script>
+
+</body>
+
+</html>
