@@ -5,29 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <h1>CRUD UI</h1>
+    <h1 class="text-center">CRUD UI</h1>
     <br>
-    <div>
-        <label>Roll No</label>
-        <input type="text" id="txtRollNo">
-        <br>
-        <label>Name</label>
-        <input type="text" id="txtName">
-        <br>
-        <label>Marks</label>
-        <input type="text" id="txtMarks">
-        <br>
-        <button onclick="viewData()">View Data</button>
-        <br>
-        <p id="output">Data fetched here...</p>
-        <br>
-        <br>
-        <button onclick="insertData()">Insert Data</button>
-        <button onclick="updateData()">Update Data</button>
-        <button onclick="deleteData()">Delete Data</button>
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-4">
+                <label>Roll No</label>
+                <input type="text" id="txtRollNo" class="form-control">
+                <br>
+                <label>Name</label>
+                <input type="text" id="txtName" class="form-control">
+                <br>
+                <label>Marks</label>
+                <input type="text" id="txtMarks" class="form-control">
+            </div>
+
+            <div class="col-8">
+                <table id="tblData" class="table table-bordered table-hover">
+                    <thead>
+                        <th>Roll No</th>
+                        <th>Name</th>
+                        <th>Marks</th>
+                    </thead>
+                    <tbody id="output"></tbody>
+                </table>
+                <br>
+                <button class="btn btn-primary" onclick="viewData()">View Data</button>
+                <button class="btn btn-success" onclick="insertData()">Insert Data</button>
+                <button class="btn btn-warning" onclick="updateData()">Update Data</button>
+                <button class="btn btn-danger" onclick="deleteData()">Delete Data</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -108,6 +123,11 @@
         }
 
         function viewData() {
+
+            let output = document.getElementById("output");
+
+            document.getElementById("tblData").style.display = "block";
+
             const myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/json");
 
@@ -120,16 +140,32 @@
                 .then((response) => response.json())
                 .then((result) => {
                     if(result.length>0) {
-                        var output = document.getElementById("output");
-
-                        output.innerHTML = "";
-
                         result.forEach(element => {
-                            output.innerHTML+=element.rollno +" "+element.name+" "+element.marks;
+
+                            let tableRow = document.createElement("tr");
+
+                            let rollNoColumn = document.createElement("td");
+                            rollNoColumn.innerHTML = element.rollno;
+
+                            let nameColumn = document.createElement("td");
+                            nameColumn.innerHTML = element.name;
+
+                            let marksColumn = document.createElement("td");
+                            marksColumn.innerHTML = element.marks;
+               
+                            tableRow.appendChild(rollNoColumn);
+                            tableRow.appendChild(nameColumn);
+                            tableRow.appendChild(marksColumn);
+
+                            output.appendChild(tableRow);
                         });
                     }
                 })
                 .catch((error) => console.error(error));
+        }
+
+        window.onload = () => {
+            document.getElementById("tblData").style.display = "none";
         }
     </script>
 
