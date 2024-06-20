@@ -1,5 +1,5 @@
 const express = require("express");
-const { MongoClient } = require("mongodb");
+const { MongoClient, ObjectId } = require("mongodb");
 
 const app = express();
 const port = 3000;
@@ -28,6 +28,10 @@ async function connectToDatabase() {
       await readDocuments(db, req, res);
     });
 
+    app.get('/read/:id', async (req, res) => {
+      await readDocumentByID(db, req, res);
+    });
+
     app.post('/create', async (req, res) => {
       console.log("in create API");
       //await createDocuments(db, req, res);
@@ -53,6 +57,19 @@ async function readDocuments(db, req, res) {
 
   // Find all documents in the collection
   const documents = await collection.find({category: qs}).toArray();
+
+  res.json(documents);
+}
+
+async function readDocumentByID(db, req, res) {
+  const collection = db.collection('products');
+
+  const qs = req.params['id'];
+
+  const recordId = new ObjectId(qs);
+
+  //{_id: ObjectId('6673d58a....')}
+  const documents = await collection.find({_id: recordId}).toArray();
 
   res.json(documents);
 }
