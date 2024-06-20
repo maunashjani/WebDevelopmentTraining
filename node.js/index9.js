@@ -27,6 +27,11 @@ async function connectToDatabase() {
     app.get('/read', async (req, res) => {
       await readDocuments(db, res);
     });
+
+    app.post('/create', async (req, res) => {
+      console.log("in create API");
+      await createDocuments(db, req, res);
+    });
   } catch (err) {
     console.error('Error:', err);
   }
@@ -40,6 +45,22 @@ async function readDocuments(db, res) {
   const documents = await collection.find().toArray();
 
   res.json(documents);
+}
+
+// Function to create documents
+async function createDocuments(db, req, res) {
+  const collection = db.collection('students');
+  
+  const { name, rollno, marks }= req.body;
+
+  const newStudent = {name, rollno, marks};
+
+  const result = await collection.insertOne(newStudent);
+
+  res.json({
+    message: "document created",
+    id: result.insertedId
+  });
 }
 
 // Call the connectToDatabase function
