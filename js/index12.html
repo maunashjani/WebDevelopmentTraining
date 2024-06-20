@@ -82,6 +82,30 @@
                 })
                 .catch((error) => console.error(error));
         }
+
+        function deleteData() {
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const raw = JSON.stringify({
+                "rollno": parseInt(document.getElementById("txtRollNo").value),
+            });
+
+            const requestOptions = {
+                method: "DELETE",
+                headers: myHeaders,
+                body: raw
+            };
+
+            fetch("http://localhost:3000/delete", requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    if(result.count>0) {
+                        alert(result.message);
+                    }
+                })
+                .catch((error) => console.error(error));
+        }
     </script>
 
 </body>
