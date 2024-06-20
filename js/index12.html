@@ -22,7 +22,7 @@
         <br>
         <button onclick="viewData()">View Data</button>
         <br>
-        <p>Data fetched here...</p>
+        <p id="output">Data fetched here...</p>
         <br>
         <br>
         <button onclick="insertData()">Insert Data</button>
@@ -102,6 +102,31 @@
                 .then((result) => {
                     if(result.count>0) {
                         alert(result.message);
+                    }
+                })
+                .catch((error) => console.error(error));
+        }
+
+        function viewData() {
+            const myHeaders = new Headers();
+            myHeaders.append("Content-Type", "application/json");
+
+            const requestOptions = {
+                method: "GET",
+                headers: myHeaders,
+            };
+
+            fetch("http://localhost:3000/read", requestOptions)
+                .then((response) => response.json())
+                .then((result) => {
+                    if(result.length>0) {
+                        var output = document.getElementById("output");
+
+                        output.innerHTML = "";
+
+                        result.forEach(element => {
+                            output.innerHTML+=element.rollno +" "+element.name+" "+element.marks;
+                        });
                     }
                 })
                 .catch((error) => console.error(error));
