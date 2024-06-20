@@ -1,0 +1,21 @@
+database: shopdb
+
+collection: products
+
+create 5 products having categories:
+2 - laptop, 
+2 - mobile,
+1 - watch
+
+example: 
+name: Macbook Air
+price: 85000
+stock: 50
+category: laptop
+
+Create CRUD API to do the following:
+
+1. Create a document in the db
+2. Read all documents in the db having category ??
+3. Update a document in the db
+3. Delete a document in the db
