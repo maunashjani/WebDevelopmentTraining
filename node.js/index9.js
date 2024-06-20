@@ -36,6 +36,10 @@ async function connectToDatabase() {
     app.put('/update', async (req, res) => {
       await updateDocuments(db, req, res);
     });
+
+    app.delete('/delete', async (req, res) => {
+      await deleteDocuments(db, req, res);
+    });
   } catch (err) {
     console.error('Error:', err);
   }
@@ -87,6 +91,22 @@ async function updateDocuments(db, req, res) {
   res.json({
     message: "document updated",
     count: result.modifiedCount
+  });
+}
+
+// Function to delete documents
+async function deleteDocuments(db, req, res) {
+  const collection = db.collection('students');
+  
+  const { rollno} = req.body;
+
+  const filter = {rollno: rollno};
+
+  const result = await collection.deleteOne(filter);
+  
+  res.json({
+    message: "document deleted",
+    count: result.deletedCount
   });
 }
 
