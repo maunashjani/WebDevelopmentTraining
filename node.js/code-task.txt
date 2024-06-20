@@ -18,4 +18,5 @@ Create CRUD API to do the following:
 1. Create a document in the db
 2. Read all documents in the db having category ??
 3. Update a document in the db
-3. Delete a document in the db
+4. Delete a document in the db
+5. Read all documents in the db with id ??
