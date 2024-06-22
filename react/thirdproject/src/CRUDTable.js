@@ -1,6 +1,6 @@
-import React from "react";
+import React, { memo } from "react";
 
-function CRUDTable({data}) {
+const CRUDTable = memo(({ data }) => {
   return (
     <div className="col-8">
       <table className="table table-bordered table-hover">
@@ -23,6 +23,6 @@ function CRUDTable({data}) {
       </table>
     </div>
   );
-}
+});
 
 export default CRUDTable;
