@@ -34,6 +34,20 @@ function App() {
 
   const insertOP = async () => {
     try {
+      const response = await fetch(process.env.API_URL, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.id.length > 0) {
+        alert(result.message);
+        fetchData();
+      }
     } catch (error) {}
   };
 
