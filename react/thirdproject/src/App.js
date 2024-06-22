@@ -24,17 +24,21 @@ function App() {
 
   const fetchData = async () => {
     try {
-      const response = await fetch(process.env.API_URL + "/read");
+      console.log(process.env.REACT_APP_API_URL);
+      const response = await fetch(process.env.REACT_APP_API_URL + "/read");
       const result = await response.json();
+
+      console.log(result);
+
       setData(result);
     } catch (error) {
-      console.error(error);
+      console.log(error);
     }
   };
 
   const insertOP = async () => {
     try {
-      const response = await fetch(process.env.API_URL, {
+      const response = await fetch(process.env.REACT_APP_API_URL + "/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,19 +52,74 @@ function App() {
         alert(result.message);
         fetchData();
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const updateOP = async () => {
     try {
-    } catch (error) {}
+      const response = await fetch(process.env.REACT_APP_API_URL + "/update", {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const result = await response.json();
+
+      if (result.count > 0) {
+        alert(result.message);
+        fetchData();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const deleteOP = async () => {
     try {
-    } catch (error) {}
+      const response = await fetch(process.env.REACT_APP_API_URL + "/delete", {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          rollno: formData.rollno,
+        }),
+      });
+
+      const result = await response.json();
+
+      if (result.count > 0) {
+        alert(result.message);
+        fetchData();
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
-  return <div></div>;
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <div className="container">
+      <h1 className="text-center">CRUD UI</h1>
+      <div className="row">
+        <CRUDForm formData={formData} handleChange={handleChange} />
+        <CRUDTable data={data} />
+      </div>
+      <CRUDButtons
+        insertOP={insertOP}
+        updateOP={updateOP}
+        deleteOP={deleteOP}
+        readOP={fetchData}
+      />
+    </div>
+  );
 }
 
 export default App;

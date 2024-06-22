@@ -1,6 +1,6 @@
 import React from "react";
 
-function CRUDButtons(insertOP, updateOP, deleteOP, readOP) {
+function CRUDButtons({insertOP, updateOP, deleteOP, readOP}) {
 
     return(
 

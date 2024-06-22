@@ -1,6 +1,6 @@
 import React from "react";
 
-function CRUDForm(formData, handleChange) {
+function CRUDForm({formData, handleChange}) {
   return (
     <div className="col-4">
       <label>RollNo</label>
