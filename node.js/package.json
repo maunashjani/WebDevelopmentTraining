@@ -3,6 +3,7 @@
     "cors": "^2.8.5",
     "express": "^4.19.2",
     "mongodb": "^6.7.0",
+    "nodehellowave": "^1.0.0",
     "nodemon": "^3.1.4"
   }
 }
